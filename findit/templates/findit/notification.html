@@ -1,0 +1,37 @@
+{%extends './base/base.html'%} {%block title%}Findit-Notifications {%endblock%}
+{%block template%}
+<div class="head">
+    <div class="hello">hello, {{user.first_name}}</div>
+    <!-- display current date-->
+    <p>{% now "l, F j, Y "%}</p>
+  </div>
+  
+  <div class="notification-content content-container">
+    <h2>Notification</h2>
+    <section class="notifications">
+        {% for notification in object_list %}
+        <p>
+            {{ notification.message }}
+            <small>{{ notification.timestamp }}</small>
+        </p>
+    {% empty %}
+        <p>You have no notifications.</p>
+    {% endfor %}
+    <!-- <section class="notifications">
+        <div class="notification">
+            <div class="message"> <strong>John</strong>  found your item, Are you willing to share your contact information with <strong>John</strong> ?</div>
+            <div class="option"><button class="option-yes">Yes</button><button class="option-no">No</button></div>
+        </div>
+        <div class="notification">
+            <div class="message"> <strong>John</strong>  found your item, Are you willing to share your contact information with <strong>John</strong> ?</div>
+            <div class="option"><button class="option-yes">Yes</button><button class="option-no">No</button></div>
+        </div>
+        <div class="notification">
+            <div class="message"> <strong>John</strong>  found your item, Are you willing to share your contact information with <strong>John</strong> ?</div>
+            <div class="option"><button class="option-yes">Yes</button><button class="option-no">No</button></div>
+        </div>
+    </section> -->
+    
+  </div>
+{%endblock%}
+

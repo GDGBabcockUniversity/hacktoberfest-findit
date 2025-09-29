@@ -1,0 +1,105 @@
+{%extends './base/base.html'%}{% load static %} {%block title%}Findit-App
+{%endblock%} {% block template%}
+
+<!-- <section class="main-container"> -->
+<div class="head-container">
+  <div class="head">
+    <div class="hello">hello, {{user.first_name}}</div>
+    <!-- display current date-->
+    <p>{% now "l, F j, Y "%}</p>
+  </div>
+  <div>
+    <input type="search" placeholder="Search for lost item" name="" id="" />
+  </div>
+  <div>
+    <button onclick="show('modal')">report lost item</button>
+  </div>
+</div>
+<div class="content-container">
+  {% if recent_lost_items%}
+  <div class="category-header">
+    <h2>Recently Lost Items</h2>
+  </div>
+   <div class="lost-items">
+    <!-- lost items go here -->
+    <div class="item-container">
+      {% for item in recent_lost_items %}
+      <div class="item">
+        <button class="item-btn">Claim</button>
+
+        {% if item.image %}
+        <img src="{{ item.image.url }}" alt="Item Image" />
+        {% else %}
+        <p style="display: flex; justify-content: center">
+          <img
+            style="width: 80%"
+            src="{% static 'images/camera.png' %}"
+            alt=""
+          />
+        </p>
+
+        {% endif %}
+        <div class="item-details">
+          <h3>{{ item.description }}</h3>
+          <p>
+            <img src="{% static 'images/location-icon.png' %}" alt="" />
+            {{ item.last_known_location }}
+          </p>
+          <p>
+            <img src="{% static 'images/calendar-icon.png' %}" alt="" />
+            {{ item.time_created }}
+          </p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+{% if recent_found_items%}
+  <div class="category-header">
+    <h2>Recently Found Items</h2>
+  </div>
+  <div class="found-items">
+    <!-- found items go here -->
+    <div class="item-container">
+      {% for item in recent_found_items %}
+      <div class="item">
+        <button class="item-btn">Found</button>
+
+        {% if item.image %}
+        <img
+          style="width: 100%; object-fit: cover"
+          src="{{ item.image.url }}"
+          alt="Item Image"
+        />
+        {% else %}
+        <p style="display: flex; justify-content: center">
+          <img
+            style="width: 80%; object-fit: cover"
+            src="{% static 'images/camera.png' %}"
+            alt=""
+          />
+        </p>
+
+        {% endif %}
+        <div class="item-details">
+          <h3>{{ item.description }}</h3>
+          <p>
+            <img src="{% static 'images/location-icon.png' %}" alt="" />
+            {{ item.last_known_location }}
+          </p>
+          <p>
+            <img src="{% static 'images/calendar-icon.png' %}" alt="" />
+            {{ item.time_created }}
+          </p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+<!-- </section> -->
+{%endblock%}
+<!-- </main>
+  </body>
+</html> -->

@@ -1,0 +1,38 @@
+{%extends './base/base.html'%}{%block title%}Findit-Edit Profile {%endblock%}
+{%block template%}
+<div class="head">
+  <div class="hello">hello, {{user.first_name}}</div>
+  <!-- display current date-->
+  <p>{% now "l, F j, Y "%}</p>
+</div>
+<div class="content-container">
+  <h1>Edit Profile</h1>
+  <form method="post">
+    {% csrf_token %}
+    <label for="img"
+      >Profile image <br />
+      {{form.profile_image}}
+    </label>
+    <div class="grid-div">
+      <label for="first_name">
+        First name <br />
+        {{form.first_name}}
+      </label>
+      <label for="last_name">
+        Last Name <br />
+        {{form.last_name}}
+      </label>
+      <label for="username">
+        Username <br />
+        {{form.username}}
+      </label>
+      <label for="phone_number">
+        Mobile Number <br />
+        {{form.phone_number}}
+      </label>
+    </div>
+
+    <button type="submit" class="btn">Save</button>
+  </form>
+</div>
+{%endblock%}

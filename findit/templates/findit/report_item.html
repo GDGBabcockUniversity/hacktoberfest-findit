@@ -1,0 +1,29 @@
+{%extends './base/base.html'%} {%block title%}Findit-Report Found Item
+{%endblock%} {%block template%}
+<div class="head">
+  <div class="hello">hello, {{user.first_name}}</div>
+  <!-- display current date-->
+  <p>{% now "l, F j, Y "%}</p>
+</div>
+<div class="content-container">
+  <form method="post">
+    {% csrf_token %}
+    <label for="">Add image of the item <br />{{form.image}}</label>
+    <div class="grid-div">
+      <label for="">Name of item<br />{{form.description}}</label>
+      <!-- <label for="">Mobile Number<br />{{form.phone_number}}</label> -->
+      <label for="">Color of item<br />{{form.color}}</label>
+      <label for="">Brand<br />{{form.brand}}</label>
+      <label for=""
+        >Last known location<br />{{form.last_known_location}}</label
+      >
+    </div>
+
+    <label for=""
+      >Distinctive features<br />{{form.distinctive_features}}</label
+    >
+
+    <button class="btn" type="submit">Submit</button>
+  </form>
+</div>
+{%endblock%}

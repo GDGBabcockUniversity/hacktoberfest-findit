@@ -1,0 +1,89 @@
+{%extends './base/base.html'%} {%load static%} {%block title%}Findit-View Items
+{%endblock%} {%block template%}
+<div class="head">
+  <div class="hello">hello, {{user.first_name}}</div>
+  <!-- display current date-->
+  <p>{% now "l, F j, Y "%}</p>
+</div>
+    {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">
+            {{ message }}
+        </div>
+    {% endfor %}
+<div class="content-container">
+  <div class="lost-items">
+    <!-- lost items go here -->
+    <div class="item-container">
+      {% for item in lost_items %}
+      <div class="item">
+        <form method="POST" action="{% url 'claim_item' item.id %}">
+          {% csrf_token %}
+        <button type="submit" class="item-btn">Claim</button>
+        </form>
+        {% if item.image %}
+        <img src="{{ item.image.url }}" alt="Item Image" />
+        {% else %}
+        <p style="display: flex; justify-content: center">
+          <img
+            style="width: 80%"
+            src="{% static 'images/camera.png' %}"
+            alt=""
+          />
+        </p>
+
+        {% endif %}
+        <div class="item-details">
+          <h3>{{ item.description }}</h3>
+          <p>
+            <img src="{% static 'images/location-icon.png' %}" alt="" />
+            {{ item.last_known_location }}
+          </p>
+          <p>
+            <img src="{% static 'images/calendar-icon.png' %}" alt="" />
+            {{ item.time_created }}
+          </p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="found-items">
+    <!-- found items go here -->
+    <div class="item-container">
+      {% for item in found_items %}
+      <div class="item">
+        <button class="item-btn">Found</button>
+
+        {% if item.image %}
+        <img
+          style="width: 100%; object-fit: cover"
+          src="{{ item.image.url }}"
+          alt="Item Image"
+        />
+        {% else %}
+        <p style="display: flex; justify-content: center">
+          <img
+            style="width: 80%; object-fit: cover"
+            src="{% static 'images/camera.png' %}"
+            alt=""
+          />
+        </p>
+
+        {% endif %}
+        <div class="item-details">
+          <h3>{{ item.description }}</h3>
+          <p>
+            <img src="{% static 'images/location-icon.png' %}" alt="" />
+            {{ item.last_known_location }}
+          </p>
+          <p>
+            <img src="{% static 'images/calendar-icon.png' %}" alt="" />
+            {{ item.time_created }}
+          </p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{%endblock%}

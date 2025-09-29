@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/9d085020-f3e9-4b94-a22e-f1a29992f314/resourceGroups/appsvc_linux_centralus_premium/providers/Microsoft.Web/sites/shadowdevs-findit",
+    "appService.deploySubpath": "."
+}

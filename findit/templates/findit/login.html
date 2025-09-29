@@ -1,0 +1,141 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FindIt-Login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0px;
+      }
+      main {
+        width: 100vw;
+        font-family: "DM Sans", sans-serif;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        overflow-x: hidden;
+      }
+      body {
+        background-color: #e8eefa;
+      }
+      .image-container img {
+        max-height: 100vh;
+        width: 100%;
+      }
+      .image-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        grid-column: 2 / span 1;
+        grid-row: 1 / span 1;
+        height: 100vh;
+      }
+      .form-container > div div {
+        margin-top: 20px;
+      }
+      .form-container > div {
+        width: 90%;
+
+        justify-content: center;
+        align-items: center;
+        max-width: 400px;
+        /* margin: 160px 200px; */
+      }
+      .form-container a {
+        text-decoration: none;
+      }
+      .form-container button {
+        width: 100%;
+        padding: 10px 0px;
+        font-size: 1em;
+        border: none;
+        margin-top: 20px;
+        font-weight: 400;
+        border-radius: 8px;
+        color: white;
+        background-color: #4f48ed;
+      }
+      .form-container input[type="email"],
+      .form-container input[type="text"],
+      .form-container input[type="password"] {
+        margin-top: 10px;
+        border: none;
+        border-radius: 8px;
+        padding: 10px 8px;
+        /* margin-bottom: 10px; */
+        width: 100%;
+      }
+      .form-container {
+        /* width: 90%; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        grid-column: 1 / span 1;
+        grid-row: 1 / span 1;
+      }
+      @media screen and (width <= 600px) {
+        main {
+          display: block;
+        }
+        .image-container img {
+          width: 100vw;
+        }
+        .image-container {
+          height: 100%;
+        }
+        .form-container {
+          margin-top: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="image-container">
+        <picture>
+          <source
+            srcset="{% static 'images/form-image-mobile.png' %}"
+            media="(max-width: 600px)"
+          />
+          <img src="{% static 'images/form-image-desktop.png' %}" alt="" />
+        </picture>
+      </section>
+      <section class="form-container">
+        <div>
+          <img src="{% static 'images/findit-logo.png' %}" alt="" />
+          <form method="post">
+            {% csrf_token %}
+            <h2>Login to your account</h2>
+            <h3>Did you lose anything ?</h3>
+            {{ form.username }}{{form.username.errors}}
+            {{ form.password }}{{form.password.errors}}
+            <div style="display: flex; justify-content: space-between">
+              <div>
+                <input
+                  type="checkbox"
+                  name="remember-me"
+                  id="remember-me"
+                /><label for="remember-me"> remember me </label>
+              </div>
+              <div><a href="#">Forgot password</a></div>
+            </div>
+            <button type="submit">Login</button>
+          </form>
+          <div>
+            Don't have an account create one ?
+            <a href="/register/">Create one now</a>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

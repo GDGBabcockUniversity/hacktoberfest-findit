@@ -1,0 +1,7 @@
+shadow
+Team1/__pycache__/
+findit/__pycache__/
+findit/migrations/__pycache__/
+db.sqlite3
+storages/__pycache__/
+storages/backends/__pycache__/

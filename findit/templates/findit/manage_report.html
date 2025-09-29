@@ -1,0 +1,52 @@
+{%extends './base/base.html'%}
+{%load static%}
+{%block title%}Findit-Manage Report {%endblock%}
+{%block template%}
+<div class="head">
+    <div class="hello">hello, {{user.first_name}}</div>
+    <!-- display current date-->
+    <p>{% now "l, F j, Y "%}</p>
+  </div>
+  <div class="manage-report content-container">
+    <div class="user-items">
+        <h1>Your lost items</h1>
+        <table>
+            <thead>
+                <td>S/N</td>
+                <td>Name</td>
+                <td>Color</td>
+                <td>Last Known Location</td>
+                <td>Action</td>
+            </thead>
+            <tr>
+                <td>1</td>
+                <td>Airpods Max</td>
+                <td>Blue</td>
+                <td>WRA</td>
+                <td><button><img src="{%static './images/delete-icon.png'%}" alt=""> Delete</button></td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Airpods Max</td>
+                <td>Blue</td>
+                <td>WRA</td>
+                <td><button><img src="{%static 'images/delete-icon.png'%}" alt=""> Delete</button></td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Airpods Max</td>
+                <td>Blue</td>
+                <td>WRA</td>
+                <td><button><img src="{%static 'images/delete-icon.png'%}" alt=""> Delete</button></td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Airpods Max</td>
+                <td>Blue</td>
+                <td>WRA</td>
+                <td><button><img src="{%static 'images/delete-icon.png'%}" alt=""> Delete</button></td>
+            </tr>
+        </table>
+    </div>
+  </div>
+{%endblock%}

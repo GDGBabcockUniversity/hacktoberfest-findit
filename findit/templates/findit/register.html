@@ -1,0 +1,146 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FindIt-Create Account</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+    /> -->
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0px;
+      }
+      body {
+        background-color: #e8eefa;
+      }
+      main {
+        width: 100vw;
+        font-family: "DM Sans", sans-serif;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        overflow-x: hidden;
+      }
+      .image-container img {
+        max-height: 100svh;
+        width: 100%;
+      }
+      .image-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        grid-column: 2 / span 1;
+        grid-row: 1 / span 1;
+        height: 100svh;
+      }
+      .form-container > div div {
+        margin-top: 20px;
+      }
+      .form-container > div {
+        width: 90%;
+
+        justify-content: center;
+        align-items: center;
+        max-width: 400px;
+        /* margin: 160px 200px; */
+      }
+      .form-container a {
+        text-decoration: none;
+      }
+      .form-container button {
+        width: 100%;
+        padding: 10px 0px;
+        font-size: 1em;
+        border: none;
+        margin-top: 20px;
+        font-weight: 400;
+        border-radius: 8px;
+        color: white;
+        background-color: #4f48ed;
+      }
+
+      .form-container .input {
+        margin-top: 10px;
+        border: none;
+        border-radius: 8px;
+        padding: 10px 8px;
+        /* margin-bottom: 10px; */
+        width: 100%;
+      }
+      .form-container {
+        /* width: 90%; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        grid-column: 1 / span 1;
+        grid-row: 1 / span 1;
+      }
+      @media screen and (width <= 600px) {
+        main {
+          display: block;
+        }
+        .image-container img {
+          width: 100vw;
+        }
+        .image-container {
+          height: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="image-container">
+        <picture>
+          <source
+            srcset="{% static 'images/form-image-mobile.png' %}"
+            media="(max-width: 600px)"
+          />
+          <img src="{% static 'images/form-image-desktop.png' %}" alt="" />
+        </picture>
+      </section>
+      <section class="form-container">
+        <div class="left-container">
+          <div>
+            <img
+              src="../../../static/images/findit-logo.svg"
+              alt="findit logo"
+            />
+          </div>
+          <form method="post">
+            {% csrf_token %}
+            <h2>Create account</h2>
+            <h3>Did you lose anything ?</h3>
+            <p>Sign up and find that missing item today!</p>
+            {{ form.first_name }}{{ form.first_name.errors }}
+            {{ form.last_name }}{{ form.last_name.errors }}
+            {{ form.username }}{{ form.username.errors }}
+            {{ form.email }}{{ form.email.errors }}
+            {{ form.phone_number }}{{ form.phone_number.errors }}
+            {{ form.password1 }}{{ form.password1.errors }}
+            {{ form.password2 }}{{ form.password2.errors }}
+            <div class="flexDiv">
+              <input type="checkbox" id="remember" name="Remember " />
+              <label for="remember">Remember me</label>
+            </div>
+            <button type="submit" class="btn">Sign Up</button>
+            <p class="lastP">
+              Do you have an account? <a href="/login">Login now!</a>
+            </p>
+          </form>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
