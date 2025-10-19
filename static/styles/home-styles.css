@@ -212,11 +212,12 @@ main {
 }
 .menu-icon,
 .close-icon {
-  width: 50px;
+  width: 24px;  
+  height: 24px;
   position: absolute;
-  visibility: hidden;
-  right: 20px;
   top: 20px;
+  right: 20px;
+  cursor: pointer;
 }
 .close-icon {
   z-index: 1200;
@@ -385,7 +386,6 @@ footer {
     z-index: 1000;
     padding: 20px;
     width: max-content;
-    height: max-content;
     visibility: hidden;
   }
   .grid-div {
